@@ -46,7 +46,7 @@ output_format = "colorized"
 [tool.coverage.run]
 branch = true
 source = [
-    "./src/z43bot/",
+    "./src/",
 ]
 
 

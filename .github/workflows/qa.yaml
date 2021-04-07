@@ -1,0 +1,28 @@
+name: QA
+
+on: [push]
+
+jobs:
+  run_tests:
+    env:
+      BOT_TOKEN: "xxx-token"
+      PORT: 8000
+      PYTHONPATH: src
+      SERVICE_URL: "http://localhost:8000"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          architecture: 'x64'
+      - name: install pipenv
+        run: pip install pipenv
+      - name: install virtual env
+        run: pipenv --three
+      - name: install packages
+        run: pipenv install --dev
+      - name: run local web server
+        run: pipenv run make run-prod &
+      - name: run tests
+        run: pipenv run make qa

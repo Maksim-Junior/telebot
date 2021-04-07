@@ -1,13 +1,15 @@
 import os
 
 import pytest
+from dotenv import load_dotenv
 from starlette import status
 from starlette.testclient import TestClient
 
 from asgi import app
 
-client = TestClient(app
-                    )
+load_dotenv()
+
+client = TestClient(app)
 
 
 @pytest.mark.functional

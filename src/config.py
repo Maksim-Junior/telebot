@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     debug: bool = Field(env="DEBUG", default=False)
     python_path: str = Field(..., env="PYTHONPATH")
     service_url: str = Field(..., env="SERVICE_URL")
+    password: str = Field(..., env="PASSWORD")
+    server_url: str = Field(..., env="BOT_URL")
 
     class Config:
         case_sensitive = True

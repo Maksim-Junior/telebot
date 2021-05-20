@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -9,7 +11,9 @@ class Message(BaseModel):
     message_id: int
     chat: Chat
     date: int
-    text: str
+    text: Optional[str] = Field(None, min_length=0, max_length=2 ** 12)
+    from_: Optional[str] = Field(None, min_length=0, max_length=2 ** 12)
+    reply_to_message: Optional["Message"] = Field(None)
 
 
 class Update(BaseModel):
@@ -20,3 +24,4 @@ class Update(BaseModel):
 class MessageReply(BaseModel):
     chat_id: int
     text: str
+    photo: str = None

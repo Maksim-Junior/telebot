@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     service_url: str = Field(..., env="SERVICE_URL")
     password: str = Field(..., env="PASSWORD")
     server_url: str = Field(..., env="BOT_URL")
+    database_url: str = Field(..., env="DATABASE_URL")
 
     class Config:
         case_sensitive = True
